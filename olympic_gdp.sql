@@ -74,6 +74,8 @@ WITH cte AS (
 SELECT * FROM cte
 WHERE duplicates>1
 
+SELECT * from summer
+
 WITH cte AS (
 	SELECT *, ROW_NUMBER() OVER(PARTITION BY year,country,gender,event,sport,discipline,medal) as duplicates
 	FROM summer
@@ -86,3 +88,6 @@ WHERE id IN (
 	WHERE c.duplicates>1
 )
 
+--drop athlete column as I'm focusing on countries
+ALTER TABLE summer
+DROP COLUMN athlete
