@@ -57,7 +57,13 @@ SET full_country=c.country
 	
 --delete nulls in full_country associated with ZZX which stands for mixed teams
 --as there is no way to associate GDP with a team comprised of more than one country
+SELECT country, full_country,COUNT(medal)
+FROM summer
+WHERE full_country IS NULL
+GROUP BY country,full_country
 
+DELETE FROM summer
+WHERE full_country IS NULL
 
 
 --delete duplicate medals so team medals only add up to 1
