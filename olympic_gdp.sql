@@ -42,8 +42,23 @@ FROM summer
 ORDER BY medal_count DESC
 
 --normalize country codes to enable joining of GDP data
-select * from country_ico
-select * from summer
+SELECT s.*,c.country FROM summer AS s
+JOIN country_ico AS C
+ON s.country=c.abbr
+
+ALTER TABLE summer
+ADD COLUMN full_country VARCHAR(30);
+
+UPDATE summer
+SET full_country=c.country
+	FROM country_ico as c
+	WHERE c.abbr=summer.country
+	
+	
+--delete nulls in full_country associated with ZZX which stands for mixed teams
+--as there is no way to associate GDP with a team comprised of more than one country
+
+
 
 --delete duplicate medals so team medals only add up to 1
 
