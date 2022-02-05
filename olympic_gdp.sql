@@ -67,4 +67,22 @@ WHERE full_country IS NULL
 
 
 --delete duplicate medals so team medals only add up to 1
+WITH cte AS (
+	SELECT *, ROW_NUMBER() OVER(PARTITION BY year,country,gender,event,sport,discipline,medal) as duplicates
+	FROM summer
+)
+SELECT * FROM cte
+WHERE duplicates>1
+
+WITH cte AS (
+	SELECT *, ROW_NUMBER() OVER(PARTITION BY year,country,gender,event,sport,discipline,medal) as duplicates
+	FROM summer
+)
+DELETE FROM summer 
+WHERE id IN (
+	SELECT s.id FROM summer as s
+	JOIN cte as c
+	ON c.id=s.id
+	WHERE c.duplicates>1
+)
 
