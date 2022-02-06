@@ -23,6 +23,19 @@ CREATE TABLE country_ico (
 	country VARCHAR (30)
 )
 
+--create GDP table
+DROP TABLE gdp
+
+CREATE TABLE gdp(
+	id int,
+	country VARCHAR (40),
+	code VARCHAR(5),
+	year FLOAT,
+	value FLOAT,
+	ioc VARCHAR(5),
+	normalized_name VARCHAR (40)
+)
+
 --check medal count for USA women by country after 1960s
 SELECT country,medal, COUNT(medal) FROM summer
 WHERE year>=1960 and gender='Women' and country='USA'
@@ -91,3 +104,17 @@ WHERE id IN (
 --drop athlete column as I'm focusing on countries
 ALTER TABLE summer
 DROP COLUMN athlete
+
+
+--change GDP year to integer to match data type of master
+ALTER TABLE GDP
+ADD COLUMN the_year INT
+
+--join GDP table with master
+UPDATE GDP
+SET the_year=CAST(year AS INT)
+
+--Drop old year  column from GDP
+ALTER TABLE GDP
+DROP COLUMN year
+
