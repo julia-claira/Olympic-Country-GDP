@@ -110,11 +110,15 @@ DROP COLUMN athlete
 ALTER TABLE GDP
 ADD COLUMN the_year INT
 
---join GDP table with master
-UPDATE GDP
-SET the_year=CAST(year AS INT)
 
 --Drop old year  column from GDP
 ALTER TABLE GDP
 DROP COLUMN year
 
+--join GDP table with master
+select * from gdp
+
+select s.*, g.value from summer s
+join gdp g
+on g.ioc=s.country and g.the_year=s.year
+where s.country='USA' and year=2000
