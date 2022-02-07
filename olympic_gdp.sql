@@ -137,4 +137,4 @@ DELETE FROM summer
 WHERE year <1960
 
 --final table
-SELECT * FROM summer
+SELECT * FROM summer_gdp
