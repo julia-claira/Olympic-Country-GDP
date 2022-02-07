@@ -127,3 +127,14 @@ WHERE g.ioc=summer.country AND g.the_year=summer.year
 --count nulls in data set after 1960
 SELECT SUM(CASE WHEN gdp IS NULL THEN 1 ELSE 0 END) FROM summer
 WHERE year>=1960
+
+--find countries with no gdp data after 1960
+SELECT DISTINCT(country) FROM SUMMER
+WHERE year>=1960 AND gdp IS NULL
+
+--drop years prior to 1960 as there is no gdp data for that time period
+DELETE FROM summer
+WHERE year <1960
+
+--final table
+SELECT * FROM summer
