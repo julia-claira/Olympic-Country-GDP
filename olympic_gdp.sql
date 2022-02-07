@@ -116,9 +116,14 @@ ALTER TABLE GDP
 DROP COLUMN year
 
 --join GDP table with master
-select * from gdp
+ALTER TABLE summer
+ADD COLUMN gdp double precision
 
-select s.*, g.value from summer s
-join gdp g
-on g.ioc=s.country and g.the_year=s.year
-where s.country='USA' and year=2000
+UPDATE summer
+SET gdp=g.value
+FROM gdp AS g
+WHERE g.ioc=summer.country AND g.the_year=summer.year
+
+--count nulls in data set after 1960
+SELECT SUM(CASE WHEN gdp IS NULL THEN 1 ELSE 0 END) FROM summer
+WHERE year>=1960
