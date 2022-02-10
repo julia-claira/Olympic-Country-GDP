@@ -138,3 +138,19 @@ WHERE year <1960
 
 --final table
 SELECT * FROM summer_gdp
+
+--create total medals table
+CREATE TABLE medal_count AS (
+SELECT full_country,COUNT(medal) FROM summer
+WHERE year=2012
+Group By full_country);
+
+--add a medal count
+WITH cte AS(
+	SELECT *,
+	COUNT(medal) OVER (PARTITION BY country,year) as medal_count
+	FROM summer
+)
+SELECT DISTINCT country,year, medal_count
+FROM CTE
+ORDER BY country DESC ,year ASC
