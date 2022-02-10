@@ -2,7 +2,7 @@
 
 ## Description 
 
-This dashboard encourages users to dynamically explore top medal-winning countries for an individual sport or overall Olympic, while also examining correlation with GDP.
+This dashboard encourages users to dynamically explore top medal-winning countries for an individual sport or overall Olympic, while also examining correlation between GDP.
 
 
 
@@ -18,9 +18,13 @@ This dashboard encourages users to dynamically explore top medal-winning countri
 
 ## Correlation
 
-Although I found a correlation between GDP and medal total per country, I wasn't confident in the results as USA so heavily skewed the model with its GDP equalling that of most other countries combined.
+Although I found an initial correlation between GDP and medal total per country, I wasn't confident in the results as USA so heavily skewed the model, with its GDP dwarfing that of most other countries combined. 
+
+So, I used the GDP z-score to remove outliers beyound two standard deviatiions and reworked the model and felt more comfortable as I still found a correlation. To further verify a significant result I looked at the residual normalcy to ensure it was a good fit. 
 
 ![Correlation Graph](resources/corr_gdp_count.jpg)
+
+There are certainly other confounders, but there does appear to be a connection with GDP and medals won. This makes sense as countries with more money have more resources to train.
 
 
 
