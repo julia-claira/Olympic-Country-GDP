@@ -18,7 +18,7 @@ This dashboard encourages users to dynamically explore top medal-winning countri
 
 ## Correlation
 
-The below link takes you to the app, running on Heroku:
+Although I found a correlation between GDP and medal total per country, I wasn't confident in the results as USA so heavily skewed the model with its GDP equalling that of most other countries combined.
 
 ![Correlation Graph](resources/corr_gdp_count.jpg)
 
