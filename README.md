@@ -61,7 +61,7 @@ The user can further explore by year and see breakdowns by medal-type, gender, p
 
 The data was pulled from various sources including [Kaggle](https://www.kaggle.com/rio2016/olympic-games) and required extensive cleaning which I did in in PostgreSQL.
 
- The Olympics use their own IOC, three digit country code which required modifying to allow for merging with our GDP data set. 
+The Olympics use their own IOC, three digit country code which required modifying to allow for merging with our GDP data set. 
 
 We had to research how medals are counted for counteries such as Soviet Union/Russia, East and West Germany,  and other countries that have gone through major shifts. (Russia claims the medals won as the Soviet Union, but the Olympic committee counts them as different. For our purposes we decided to merge the medal count.)
 
